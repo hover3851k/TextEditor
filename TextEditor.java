@@ -718,7 +718,7 @@ public void actionPerformed(ActionEvent e) {
             }
         }
     }
-    //open saved file
+    //opening saved file
     else if (e.getSource() == openItem) {
         JFileChooser fileChooser = new JFileChooser();
         int option = fileChooser.showOpenDialog(this);
@@ -812,9 +812,6 @@ public void actionPerformed(ActionEvent e) {
             return (JTextArea) scrollPane.getViewport().getView();
         }
         return null;
-    }
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(TextEditor::new);
     }
 
 }

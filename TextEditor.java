@@ -3,7 +3,7 @@
 /**
  * A simple text editor with basic functionality.
  *
- * @author [simhadri]
+ * @author Simhadri
  */
 
 
@@ -74,7 +74,6 @@ public class TextEditor extends JFrame implements ActionListener {
     private JMenuItem printItem;
     private JMenuItem pasteItem;
     JComboBox<String> newFontBox;
-    JSpinner newFontSize;
     JScrollPane newScrollPane;
     JButton newColorButton ;
     JLabel label;
@@ -242,11 +241,16 @@ public class TextEditor extends JFrame implements ActionListener {
         } else {
             textArea.setForeground(Color.BLACK);
         }
-
+        
         // Setuping the font size spinner
-        newFontSize = new JSpinner(new SpinnerNumberModel(initialFontSize, 1, 100, 1));
-        newFontSize.setPreferredSize(new Dimension(40, 20));
-        newFontSize.addChangeListener(e -> textArea.setFont(new Font(textArea.getFont().getFamily(), Font.PLAIN, (int) newFontSize.getValue())));
+        int initialSize = 20;
+        JSpinner newFontSize = new JSpinner(new SpinnerNumberModel(initialSize, 1, 100, 1));
+
+		newFontSize.addChangeListener(e -> {
+			   int newSize = (int) newFontSize.getValue();
+			   textArea.setFont(new Font(textArea.getFont().getFamily(), Font.PLAIN, newSize));
+		});
+
     
         // Setupping the color button
         ImageIcon i = new ImageIcon("C:\\Users\\pulip\\Downloads\\icons8-blue-color-20.png");
@@ -548,7 +552,6 @@ private void setDarkMode() {
     boldButton.setForeground(Color.BLACK);
     italicButton.setForeground(Color.BLACK);
     italicButton.setBackground(new Color(120,120,120));
-    newFontSize.setBackground(Color.CYAN);
     label.setForeground(Color.BLACK);
     newColorButton.setBorder(BorderFactory.createLineBorder(new Color(120,120,120)));
     newColorButton.setBackground(new Color(120,120,120));
@@ -809,6 +812,9 @@ public void actionPerformed(ActionEvent e) {
             return (JTextArea) scrollPane.getViewport().getView();
         }
         return null;
+    }
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(TextEditor::new);
     }
 
 }

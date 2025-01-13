@@ -408,7 +408,22 @@ public class TextEditor extends JFrame implements ActionListener {
             // Check if the component is a JPanel
             if (component instanceof JPanel) {
                 JPanel panel = (JPanel) component;
-                
+                controlPanel = (JPanel) panel.getComponent(0);
+
+                // Update the control panel's background color
+                controlPanel.setBackground(Color.WHITE);
+
+                // Update the background colors of the bold, italic, and color buttons
+                boldButton = (JButton) controlPanel.getComponent(5);
+                italicButton = (JButton) controlPanel.getComponent(4);
+                newColorButton = (JButton) controlPanel.getComponent(3);
+
+                boldButton.setBackground(Color.WHITE);
+                italicButton.setBackground(Color.WHITE);
+                newColorButton.setBackground(Color.WHITE);
+                newColorButton.setBorder(BorderFactory.createLineBorder(Color.white,0));
+                boldButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
+                italicButton.setBorder(BorderFactory.createLineBorder(Color.white, 1));
                 // Get the scroll pane and text area
                 JScrollPane scrollPane = (JScrollPane) panel.getComponent(1);
                 JTextArea textArea = (JTextArea) scrollPane.getViewport().getView();
@@ -420,7 +435,9 @@ public class TextEditor extends JFrame implements ActionListener {
                 textArea.setBackground(Color.WHITE);
                 scrollPane.setBackground(Color.WHITE);
                 scrollPane.setOpaque(true);
-                
+                newColorButton.setBackground(Color.white);
+                italicButton.setBackground(Color.white);
+                boldButton.setBackground(Color.white);
                 // Update the foreground color of the text area if necessary
                 if (style.foreground == null || style.foreground == Color.WHITE) {
                     textArea.setForeground(Color.BLACK);
@@ -476,7 +493,24 @@ private void setDarkMode() {
         // Check if the component is a JPanel
         if (component instanceof JPanel) {
             JPanel panel = (JPanel) component;
-            
+            controlPanel = (JPanel) panel.getComponent(0);
+
+            // Update the control panel's background color
+            controlPanel.setBackground(new Color(120, 120, 120));
+
+            // Update the background colors of the bold, italic, and color buttons
+            boldButton = (JButton) controlPanel.getComponent(5);
+            italicButton = (JButton) controlPanel.getComponent(4);
+            newColorButton = (JButton) controlPanel.getComponent(3);
+
+            boldButton.setBackground(new Color(120, 120, 120));
+            italicButton.setBackground(new Color(120, 120, 120));
+            newColorButton.setBackground(new Color(120, 120, 120));
+            newColorButton.setBorder(BorderFactory.createLineBorder(new Color(120,120,120)));
+            boldButton.setBorder(BorderFactory.createLineBorder(new Color(120,120,120)));
+            italicButton.setBorder(BorderFactory.createLineBorder(new Color(120,120,120)));
+
+
             // Get the scroll pane and text area
             JScrollPane scrollPane = (JScrollPane) panel.getComponent(1);
             JTextArea textArea = (JTextArea) scrollPane.getViewport().getView();
@@ -519,7 +553,6 @@ private void setDarkMode() {
     newColorButton.setBorder(BorderFactory.createLineBorder(new Color(120,120,120)));
     newColorButton.setBackground(new Color(120,120,120));
     controlPanel.setBackground(new Color(120, 120, 120));
-    
     // Repaint the frame to apply the changes
     this.revalidate();
     this.repaint();
@@ -778,5 +811,4 @@ public void actionPerformed(ActionEvent e) {
         return null;
     }
 
-    
 }

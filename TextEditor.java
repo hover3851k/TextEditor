@@ -253,7 +253,7 @@ public class TextEditor extends JFrame implements ActionListener {
 
     
         // Setupping the color button
-        ImageIcon i = new ImageIcon("C:\\Users\\pulip\\Downloads\\icons8-blue-color-20.png");
+        ImageIcon i = new ImageIcon(".src\\icons8-blue-color-20.png");
         newColorButton = new JButton(i);
         newColorButton.setFocusable(false);
         newColorButton.addActionListener(e -> {
